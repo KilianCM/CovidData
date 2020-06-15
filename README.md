@@ -1,4 +1,4 @@
-# hello-world
+# CovidData
 
 ## Project setup
 ```
