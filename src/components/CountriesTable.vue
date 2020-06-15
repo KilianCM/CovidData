@@ -1,12 +1,20 @@
 <template>
-    <a-table
-            :columns="columns"
-            :data-source="data"
-            :row-key="record => record.CountryCode"
-            :loading="loading"
-            @change="handleTableChange"
-    >
-    </a-table>
+    <div>
+        <a-input placeholder="Search specific country" class="search-input" v-model="filter" />
+
+        <a-table
+                :columns="columns"
+                :data-source="filteredCountries"
+                :row-key="record => record.Slug"
+                :loading="loading"
+                @change="handleTableChange"
+        >
+        <span slot="action" slot-scope="text, record">
+          <router-link :to="getRouterLink(record)">details</router-link>
+        </span>
+        </a-table>
+    </div>
+
 </template>
 
 <script>
@@ -35,6 +43,11 @@
             dataIndex: 'TotalRecovered',
             //sorter: true
         },
+        {
+            title: 'Action',
+            key: 'action',
+            scopedSlots: { customRender: 'action' },
+        },
     ];
 
     export default {
@@ -44,6 +57,7 @@
                 data: [],
                 loading: false,
                 columns,
+                filter: ""
             }
         },
         methods: {
@@ -51,11 +65,21 @@
                 this.loading = true;
                 CovidApi.getCountriesData().then(response => {
                     this.data = response;
-                    this.loading = false
+                    this.loading = false;
                 });
             },
             handleTableChange() {
 
+            },
+            getRouterLink(country) {
+                return "/country/" + country.Slug;
+            },
+        },
+        computed: {
+            filteredCountries() {
+                return this.data.filter((country) => {
+                    return country.Country.toLowerCase().indexOf(this.filter.toLowerCase()) !== -1;
+                });
             },
         },
         mounted() {
@@ -64,6 +88,11 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+
+    .search-input {
+        width: 50%;
+        margin-bottom: 10px;
+    }
 
 </style>

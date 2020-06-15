@@ -3,13 +3,14 @@
     <h1>Welcome on CovidData</h1>
     <p>Last update : {{date | formatDate}}</p>
     <div class="wrapper">
-      <div class="statistics" v-if="!loading">
-        <a-statistic class="spaced" title="Total confirmed cases" :value="summaryData.TotalConfirmed" />
-        <a-statistic class="spaced" title="Total deaths" :value="summaryData.TotalDeaths"/>
-        <a-statistic title="Total recovered" :value="summaryData.TotalRecovered" />
-      </div>
+      <global-statistics :loading="loading"
+                        :confirmed="summaryData.TotalConfirmed"
+                        :deaths="summaryData.TotalDeaths"
+                        :recovered="summaryData.TotalRecovered">
+
+      </global-statistics>
+      <countries-table></countries-table>
     </div>
-    <CountriesTable></CountriesTable>
   </div>
 </template>
 
@@ -17,18 +18,20 @@
 
 import CovidApi from "../services/api/CovidApi";
 import CountriesTable from "./CountriesTable";
+import GlobalStatistics from "./GlobalStatistics";
 
 export default {
   name: 'SummaryPage',
-  components: {CountriesTable},
+  components: {GlobalStatistics, CountriesTable},
   data () {
     return {
       summaryData: {},
       date: "",
-      loading: true
+      loading: false
     }
   },
   mounted() {
+    this.loading = true;
     CovidApi.getSummary().then(data => {
       this.summaryData = data.Global;
       this.date = data.Date;
@@ -60,19 +63,10 @@ export default {
 
   .wrapper {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: space-around;
   }
 
-  .statistics {
-    text-align: left;
-    display: flex;
-    justify-content: space-between;
-    max-width: 60%;
-    margin-bottom: 50px;
 
-    .spaced {
-      margin-right: 30px;
-    }
-
-  }
 </style>

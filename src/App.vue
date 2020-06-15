@@ -1,18 +1,16 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/stay-home.png">
-    <SummaryPage/>
+
+    <transition name="slide-in-bottom" mode="out-in">
+      <router-view/>
+    </transition>
   </div>
 </template>
 
 <script>
-import SummaryPage from "./components/SummaryPage";
-
 export default {
-  name: 'App',
-  components: {
-    SummaryPage
-  }
+  name: 'App'
 }
 </script>
 

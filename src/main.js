@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Antd from 'ant-design-vue';
 import VueResource from 'vue-resource';
-import VueRouter from 'vue-router'
+import VueRouter from 'vue-router';
 import App from './App';
 import moment from 'moment';
 import 'ant-design-vue/dist/antd.css';
@@ -18,7 +18,6 @@ Vue.use(VueRouter);
 // Base URL for API requests
 Vue.http.options.root = 'https://api.covid19api.com';
 
-
 Vue.filter('formatDate', function(value) {
   if (value) {
     return moment(String(value)).format('MM-DD-YYYY hh:mm');
@@ -27,7 +26,7 @@ Vue.filter('formatDate', function(value) {
 
 const routes = [
   { path: '/', component: SummaryPage },
-  { path: '/country', component: CountryDetailsPage }
+  { path: '/country/:slug', component: CountryDetailsPage }
 ];
 
 const router = new VueRouter({

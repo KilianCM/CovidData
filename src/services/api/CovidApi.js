@@ -10,5 +10,10 @@ export default {
         return Vue.http.get('summary').then(response => {
             return response.data.Countries
         });
+    },
+    getCountryDetails(slug) {
+        return Vue.http.get('total/country/' + slug).then(response => {
+           return response.data
+        });
     }
 }
