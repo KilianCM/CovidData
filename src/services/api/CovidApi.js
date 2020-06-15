@@ -15,5 +15,10 @@ export default {
         return Vue.http.get('total/country/' + slug).then(response => {
            return response.data
         });
+    },
+    getApiVersion() {
+        return Vue.http.get('version').then(response => {
+            return response.data
+        });
     }
 }

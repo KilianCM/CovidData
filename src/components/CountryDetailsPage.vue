@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="details-page">
         <h1>Statistics of {{countryName}}</h1>
         <div class="wrapper">
             <global-statistics :loading="loading"
@@ -70,10 +70,16 @@
 </script>
 
 <style scoped lang="scss">
-    .wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
+
+    .details-page {
+        min-height: 80vh;
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+        }
     }
+
 </style>

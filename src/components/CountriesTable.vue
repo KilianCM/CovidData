@@ -2,7 +2,7 @@
     <div>
         <a-input placeholder="Search specific country" class="search-input" v-model="filter" />
 
-        <a-table
+        <a-table class="table"
                 :columns="columns"
                 :data-source="filteredCountries"
                 :row-key="record => record.Slug"
@@ -24,29 +24,34 @@
         {
             title: 'Name',
             dataIndex: 'Country',
-            //sorter: true,
-            width: '20%'
+            width: '25%'
         },
         {
             title: 'Total confirmed cases',
             dataIndex: 'TotalConfirmed',
-            //sorter: true,
-            width: '30%',
+            sorter: (a, b) => a.TotalConfirmed - b.TotalConfirmed,
+            sortDirections: ['descend', 'ascend'],
+            width: '25%',
         },
         {
             title: 'Total deaths',
             dataIndex: 'TotalDeaths',
-            //sorter: true
+            sorter: (a, b) => a.TotalDeaths - b.TotalDeaths,
+            sortDirections: ['descend', 'ascend'],
+            width: '15%'
         },
         {
             title: 'Total recovered',
             dataIndex: 'TotalRecovered',
-            //sorter: true
+            width: '20%',
+            sorter: (a, b) => a.TotalRecovered - b.TotalRecovered,
+            sortDirections: ['descend', 'ascend'],
         },
         {
             title: 'Action',
             key: 'action',
             scopedSlots: { customRender: 'action' },
+            width: '15%'
         },
     ];
 
@@ -89,6 +94,11 @@
 </script>
 
 <style scoped lang="scss">
+
+    .table {
+        min-width: 100%;
+        max-width: 100%;
+    }
 
     .search-input {
         width: 50%;
