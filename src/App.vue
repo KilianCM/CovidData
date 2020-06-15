@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/stay-home.png">
+    <router-link to="/">
+      <img alt="Vue logo" src="./assets/stay-home.png">
+    </router-link>
 
     <transition name="slide-in-bottom" mode="out-in">
       <router-view/>

@@ -10,6 +10,7 @@
                                :deaths-evolution="getDeathsEvolution"
                                :recovered-evolution="getRecoveredEvolution"
             ></global-statistics>
+            <country-chart :data="data"></country-chart>
         </div>
     </div>
 </template>
@@ -17,13 +18,14 @@
 <script>
     import CovidApi from "../services/api/CovidApi";
     import GlobalStatistics from "./GlobalStatistics";
+    import CountryChart from "./CountryChart";
 
     export default {
         name: "CountryDetailsPage",
-        components: {GlobalStatistics},
+        components: {GlobalStatistics, CountryChart},
         data() {
             return {
-                data: {},
+                data: [],
                 globalStats: {},
                 countryName: "",
                 loading: false
@@ -70,6 +72,8 @@
 <style scoped lang="scss">
     .wrapper {
         display: flex;
+        flex-direction: column;
+        align-items: center;
         justify-content: space-around;
     }
 </style>
