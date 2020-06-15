@@ -1,17 +1,17 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/stay-home.png">
-    <Summary/>
+    <SummaryPage/>
   </div>
 </template>
 
 <script>
-import Summary from "./components/Summary";
+import SummaryPage from "./components/SummaryPage";
 
 export default {
   name: 'App',
   components: {
-    Summary
+    SummaryPage
   }
 }
 </script>

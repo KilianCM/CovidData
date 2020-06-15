@@ -2,8 +2,13 @@ import Vue from 'vue';
 
 export default {
     getSummary() {
-        Vue.http.get('summary').then(function(response) {
-            console.log(response);
+        return Vue.http.get('summary').then(response => {
+            return response.data
+        });
+    },
+    getCountriesData() {
+        return Vue.http.get('summary').then(response => {
+            return response.data.Countries
         });
     }
 }
