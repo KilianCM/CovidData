@@ -1,13 +1,15 @@
 # CovidData
 
-This project present data from the Covid-19 crisis usign the [Covid-19 API](https://api.covid19api.com/).
-This app is available on this address: **[https://coviddata-kcm.netlify.app/](https://coviddata-kcm.netlify.app/#/)**
+This project presents data from the Covid-19 crisis using the [Covid-19 API](https://api.covid19api.com/).
+Available on this address: **[https://coviddata-kcm.netlify.app/](https://coviddata-kcm.netlify.app/#/)**
 
 ## Libs used 
 
 - [VueResource](https://github.com/pagekit/vue-resource)
-- [Chart.js](https://www.chartjs.org/)
+- [Chart.js](https://www.chartjs.org/) & [Vue-ChartJS](https://vue-chartjs.org/)
 - [Ant Vue Design](https://www.antdv.com/docs/vue/introduce/)
+- [Moment.js](https://momentjs.com/)
+- [VueRouter](https://router.vuejs.org/)
 
 ## Project setup
 ```
