@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/343e3551-6b67-4a96-abf3-370f75da5e2e/deploy-status)](https://app.netlify.com/sites/coviddata-kcm/deploys)
+
 # CovidData
 
 This project presents data from the Covid-19 crisis using the [Covid-19 API](https://api.covid19api.com/).
